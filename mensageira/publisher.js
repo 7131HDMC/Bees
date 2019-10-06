@@ -4,7 +4,7 @@ var amqp = require('amqplib/callback_api');
 
 var sosLocation = "{'Latitude' : 14.21234,'Longitude': -23.4456,	'SOS': 'Estou em panico, me ajude!!! Ligue para a policia! Por favor', 'TimePanico' : 12.5 }";
 
-amqp.connect('amqp://18.218.249.157:5672', function(error0, connection) {
+amqp.connect('amqp://18.218.249.157', function(error0, connection) {
     if (error0) {
         throw error0;
     }
