@@ -40,9 +40,9 @@ class CadastrarController extends Controller
         //
         $abelha = new user;
        // $abelha->name = $request->name;
-        $abelha->indentifyUser = $request->identify;
-        $abelha->password = $request->password;
-        $abelha->pkEmail = $request->mail;
+       $abelha->indentifyUser = $request->json("user_name");
+        $abelha->password = $request->json("user_pass");
+        $abelha->pkEmail = $request->json("user_email");
      //   $abelha->describleUser = $request->bio;
       //  $abelha->callDisponibility = $request->callDisponibility;
       //  $abelha->sosMensage = $request->sosMensage;
