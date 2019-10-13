@@ -40,8 +40,7 @@ class CadastrarController extends Controller
         dd('Estou aqui em: CategoryController no método store()');
         $abelha = new user;
        // $abelha->name = $request->name;
-     if(request->isJson()) 
-     {
+    
          $abelha->indentifyUser = $request->json("user_name");
      
         $abelha->password = $request->json("user_pass");
@@ -51,7 +50,7 @@ class CadastrarController extends Controller
       //  $abelha->sosMensage = $request->sosMensage;
         $abelha->save();
        // $abelha = user::create();
-     }
+     
         return response()->json($abelha);
     }
 
