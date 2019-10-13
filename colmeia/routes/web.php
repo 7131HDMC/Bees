@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     // Insere um novo usuário ao banco de dados:
     $user = \App\user::create([
         'indentifyUser'         => 'uid',
@@ -19,7 +19,6 @@ Route::get('/', function () {
         'password'     => '12345678',
         'name' => 'Carlos Ferreira',
     ]);
-//Route::get('/', function () {
-    return view('welcome');
-});
+    */
+Route::get('/', 'CadastrarController@store');
 //Route::post('/cadastrar','CadastrarController@store');
