@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+$this->get('/', function () {
+    // Insere um novo usuário ao banco de dados:
+    $user = \App\user::create([
+        'name'         => 'Carlos Ferreira',
+        'email'     => 'carlos@especializati.com.br',
+        'password'     => bcrypt('SenhaAqui'),
+    ]);
+//Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/cadastrar','CadastrarController@store');
+//Route::post('/cadastrar','CadastrarController@store');
