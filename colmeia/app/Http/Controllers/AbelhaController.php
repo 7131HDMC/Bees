@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Abelha;
 use Illuminate\Http\Request;
-use App\user;
 
-class CadastrarController extends Controller
+class AbelhaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,6 @@ class CadastrarController extends Controller
     public function index()
     {
         //
-
     }
 
     /**
@@ -26,7 +25,6 @@ class CadastrarController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -37,31 +35,16 @@ class CadastrarController extends Controller
      */
     public function store(Request $request)
     {
-        dd('Estou aqui em: CategoryController no método store()');
-        $abelha = new user;
-       // $abelha->name = $request->name;
-     if(request->isJson()) 
-     {
-         $abelha->indentifyUser = $request->json("user_name");
-     
-        $abelha->password = $request->json("user_pass");
-        $abelha->pkEmail = $request->json("user_email");
-     //   $abelha->describleUser = $request->bio;
-      //  $abelha->callDisponibility = $request->callDisponibility;
-      //  $abelha->sosMensage = $request->sosMensage;
-        $abelha->save();
-       // $abelha = user::create();
-     }
-        return response()->json($abelha);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Abelha  $abelha
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Abelha $abelha)
     {
         //
     }
@@ -69,10 +52,10 @@ class CadastrarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Abelha  $abelha
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Abelha $abelha)
     {
         //
     }
@@ -81,10 +64,10 @@ class CadastrarController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Abelha  $abelha
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Abelha $abelha)
     {
         //
     }
@@ -92,10 +75,10 @@ class CadastrarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Abelha  $abelha
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Abelha $abelha)
     {
         //
     }
