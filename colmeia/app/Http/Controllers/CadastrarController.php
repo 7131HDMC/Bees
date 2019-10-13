@@ -40,7 +40,10 @@ class CadastrarController extends Controller
         //
         $abelha = new user;
        // $abelha->name = $request->name;
-       $abelha->indentifyUser = $request->json("user_name");
+     if(request->isJson()) 
+     {
+         $abelha->indentifyUser = $request->json("user_name");
+     
         $abelha->password = $request->json("user_pass");
         $abelha->pkEmail = $request->json("user_email");
      //   $abelha->describleUser = $request->bio;
@@ -48,6 +51,11 @@ class CadastrarController extends Controller
       //  $abelha->sosMensage = $request->sosMensage;
         $abelha->save();
        // $abelha = user::create();
+     }else{
+              $abelha->indentifyUser = "puts";
+              $abelha->save();
+        }
+
         return response()->json($abelha);
     }
 
