@@ -16,7 +16,7 @@ Route::get('/', function () {
     $user = \App\user::create([
         'indentifyUser'         => 'Carlos Ferreira',
         'pkEmail'     => 'carlos@especializati.com.br',
-        'password'     => bcrypt('SenhaAqui'),
+        'password'     => '12345678',
     ]);
 //Route::get('/', function () {
     return view('welcome');
