@@ -51,11 +51,7 @@ class CadastrarController extends Controller
       //  $abelha->sosMensage = $request->sosMensage;
         $abelha->save();
        // $abelha = user::create();
-     }else{
-              $abelha->indentifyUser = "puts";
-              $abelha->save();
-        }
-
+     }
         return response()->json($abelha);
     }
 
