@@ -47,7 +47,8 @@ class CadastrarController extends Controller
       //  $abelha->callDisponibility = $request->callDisponibility;
       //  $abelha->sosMensage = $request->sosMensage;
         $abelha->save();
-
+       // $abelha = user::create();
+        return response()->json($abelha);
     }
 
     /**
