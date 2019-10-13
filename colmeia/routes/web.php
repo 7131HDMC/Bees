@@ -20,5 +20,5 @@
         'name' => 'Carlos Ferreira',
     ]);
     */
-Route::post('/', 'CadastrarController@store');
+Route::resource('/', 'CadastrarController@store');
 //Route::post('/cadastrar','CadastrarController@store');
