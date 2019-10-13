@@ -14,9 +14,10 @@
 Route::get('/', function () {
     // Insere um novo usuário ao banco de dados:
     $user = \App\user::create([
-        'indentifyUser'         => 'Carlos Ferreira',
+        'indentifyUser'         => 'uid',
         'pkEmail'     => 'carlos@especializati.com.br',
         'password'     => '12345678',
+        'name' => 'Carlos Ferreira',
     ]);
 //Route::get('/', function () {
     return view('welcome');
