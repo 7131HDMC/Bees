@@ -11,11 +11,11 @@
 |
 */
 
-$this->get('/', function () {
+Route::get('/', function () {
     // Insere um novo usuário ao banco de dados:
     $user = \App\user::create([
-        'name'         => 'Carlos Ferreira',
-        'email'     => 'carlos@especializati.com.br',
+        'indentifyUser'         => 'Carlos Ferreira',
+        'pkEmail'     => 'carlos@especializati.com.br',
         'password'     => bcrypt('SenhaAqui'),
     ]);
 //Route::get('/', function () {
