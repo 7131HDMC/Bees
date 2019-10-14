@@ -22,3 +22,4 @@
     */
 Route::get('/', 'CadastrarController@store');
 //Route::post('/cadastrar','CadastrarController@store');
+?>
