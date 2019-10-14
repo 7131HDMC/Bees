@@ -13,4 +13,4 @@
 //Route::get('/', function () {
  //   return view('welcome');
 //});
-Route::get('/cadastrar','CadastrarController@store');
+Route::get('/','CadastrarController@store');
