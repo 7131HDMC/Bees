@@ -15,7 +15,6 @@ class CadastrarController extends Controller
     public function index()
     {
         //
-          dd('Estou aqui em: CategoryController no método index()');
     }
 
     /**
@@ -26,7 +25,6 @@ class CadastrarController extends Controller
     public function create()
     {
         //
-          dd('Estou aqui em: CategoryController no método create()');
     }
 
     /**
