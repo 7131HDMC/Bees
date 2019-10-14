@@ -20,9 +20,7 @@ class Abelha extends Migration
                 $table->string("pkEmail",70)->unique();
                 $table->string("password",12);
                 $table->string("indentifyUser",30);
-                $table->string("name",60);
-                $table->string("describleUser",150);
-                $table->boolean("callDisponibility");
+                $table->string("callDisponibility");
                 $table->string("sosMensage",70);
                  $table->unsignedBigInteger("estado");
                  $table->foreign("estado")->references("id")->on("panicoUser")->onUpdate("cascade");
