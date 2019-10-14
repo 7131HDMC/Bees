@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
