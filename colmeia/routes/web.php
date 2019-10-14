@@ -11,6 +11,6 @@
 |
 */
 //Route::get('/', function () {
-    return view('welcome');
-});
+ //   return view('welcome');
+//});
 Route::get('/cadastrar','CadastrarController@store');
