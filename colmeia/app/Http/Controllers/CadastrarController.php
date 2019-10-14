@@ -40,15 +40,15 @@ class CadastrarController extends Controller
     {
         dd('Estou aqui em: CategoryController no método store()');
         $abelha = new user;
-       // $abelha->name = $request->name;
+        $abelha->name = '';
     
          $abelha->indentifyUser = 'haridade';;//$request->json("user_name");
      
         $abelha->password = '71318464';//$request->json("user_pass");
         $abelha->pkEmail = 'haricefetmg@gmail.com';;//$request->json("user_email");
-     //   $abelha->describleUser = $request->bio;
-      //  $abelha->callDisponibility = $request->callDisponibility;
-      //  $abelha->sosMensage = $request->sosMensage;
+       $abelha->describleUser = '';
+        $abelha->callDisponibility = true;
+        $abelha->sosMensage = '';
         $abelha->save();
        // $abelha = user::create();
      
