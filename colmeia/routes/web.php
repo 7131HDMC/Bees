@@ -11,15 +11,7 @@
 |
 */
 
-/*Route::get('/', function () {
-    // Insere um novo usuário ao banco de dados:
-    $user = \App\user::create([
-        'indentifyUser'         => 'uid',
-        'pkEmail'     => 'carlos@especializati.com.br',
-        'password'     => '12345678',
-        'name' => 'Carlos Ferreira',
-    ]);
-    */
-Route::get('/', 'CadastrarController@store');
-//Route::post('/cadastrar','CadastrarController@store');
-?>
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/cadastrar','CadastrarController@store');
