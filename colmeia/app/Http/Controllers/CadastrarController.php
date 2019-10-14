@@ -46,9 +46,8 @@ class CadastrarController extends Controller
         $abelha->callDisponibility = 's';
         $abelha->sosMensage = 'Me ajude';
        // $abelha->estado = '';
-        
-         dd('Estou aqui em: CategoryController no método store() and :: ' . $abelha->toSql());
-         $abelha->save();
+       // $abelha->save();
+         dd('Estou aqui em: CategoryController no método store() and :: ' . $abelha->save()->toSql());
        // $abelha = user::create();
      
        // return response()->json($abelha);
