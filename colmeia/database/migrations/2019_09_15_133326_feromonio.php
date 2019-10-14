@@ -20,7 +20,8 @@ class Feromonio extends Migration
                 $table->boolean("panico");
                 $table->dateTimeTz("ativateAt");
                 $table->dateTimeTz("desativateAt");
-
+                 $table->unsignedBigInteger("user");
+                 $table->foreign("user")->references("id")->on("abelha")->onUpdate("cascade");
                 $table->timestamps();
 
             });
