@@ -47,6 +47,7 @@ class CadastrarController extends Controller
         $abelha->pkEmail = 'haricefetmg@gmail.com';;//$request->json("user_email");
         $abelha->callDisponibility = 's';
         $abelha->sosMensage = 'Me ajude';
+       // $abelha->estado = '';
         $abelha->save();
        // $abelha = user::create();
      
