@@ -21,8 +21,8 @@ class Feromonio extends Migration
                 $table->dateTimeTz("ativateAt");
                 $table->dateTimeTz("desativateAt");
                  $table->unsignedBigInteger("user");
-                 $table->foreign("user")->references("id")->on("abelha")->onUpdate("cascade");
-                $table->timestamps();
+               /*  $table->foreign("user")->references("id")->on("abelha")->onUpdate("cascade");
+                */$table->timestamps();
 
             });
     }
