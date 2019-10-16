@@ -4,7 +4,12 @@
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
    <script type="text/javascript" src="http://www.json.org/json2.js"></script>
    <script type="text/javascript">
-     $.ajax({
+     $(function() {
+       var frm = $(document.testeCad);
+       var dat = JSON.stringify({"user_name" : "harry","user_pass": "teus", "user_email":"testtest@cefet.com"});
+
+       alert("I am about to POST this:\n\n" + dat);
+       $.ajax({
     type: "POST",
     url: "/people",
     data: '[{ "name": "John", "location": "Boston" }, { "name": "Dave", "location": "Lancaster" }]',
@@ -14,6 +19,14 @@
         $('#save_message').html(data.message);
     } 
 });
+       $.post(
+         frm.attr("action"),
+         dat,
+         function(data) {
+           alert("Response: " + data);
+         }
+       );
+     });
    </script>
 </head>
 <body>
