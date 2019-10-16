@@ -14,4 +14,4 @@ ini_set('display_errors', 'On');
 Route::get('/index', function () {
     return view('welcome');
 });
-Route::get('/','CadastrarController@store');
+Route::post('/','CadastrarController@store');
