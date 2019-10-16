@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\user;
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
 class CadastrarController extends Controller
 {
     /**
