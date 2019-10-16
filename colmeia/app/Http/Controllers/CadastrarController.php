@@ -36,7 +36,7 @@ class CadastrarController extends Controller
      */
     public function store(Request $request)
     {
-       
+       /*
         $abelha = new user;
     
          $abelha->indentifyUser = $request->json("user_name");
@@ -44,12 +44,10 @@ class CadastrarController extends Controller
         $abelha->password = $request->json("user_pass");
         $abelha->pkEmail = $request->json("user_email");
         $abelha->callDisponibility = 's';
-        $abelha->sosMensage = 'Me ajude';
-       // $abelha->estado = '';
-       // $abelha->save();
-         dd('Estou aqui em: CategoryController no método store() and :: ' . $abelha->save()->toSql());
-       // $abelha = user::create();
-     
+        $abelha->sosMensage = 'Me ajude';*/
+        $data = $request->json()->all();
+         dd('Estou aqui em: CategoryController no método store() and the data from sigin are :: ' . $data /*. $abelha->save()->toSql()*/);
+       
        // return response()->json($abelha);
     }
 
