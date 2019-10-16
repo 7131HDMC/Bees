@@ -9,16 +9,7 @@
        var dat = JSON.stringify({"user_name" : "harry","user_pass": "teus", "user_email":"testtest@cefet.com"});
 
        alert("I am about to POST this:\n\n" + dat);
-       $.ajax({
-    type: "POST",
-    url: "/people",
-    data: '[{ "name": "John", "location": "Boston" }, { "name": "Dave", "location": "Lancaster" }]',
-    contentType: "json",
-    processData: false,
-    success:function(data) {
-        $('#save_message').html(data.message);
-    } 
-});
+       
        $.post(
          frm.attr("action"),
          dat,
