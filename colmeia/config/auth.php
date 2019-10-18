@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+         'customcs' => [
+           'driver' => 'session',
+           'provider' => 'csauth',
+       ]
     ],
 
     /*
@@ -68,8 +73,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\user::class,
         ],
+
+        'csauth' => [
+           'driver' => 'customcs',
+           'model' => App\user::class,
+       ]
 
         // 'users' => [
         //     'driver' => 'database',
