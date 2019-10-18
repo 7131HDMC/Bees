@@ -37,10 +37,10 @@ class CadastrarController extends Controller
        
         $abelha = new user;
     
-         $abelha->indentifyUser = $request->json("user_name");
+         $abelha->indentifyUser = $request->input("user_name");
      
-        $abelha->password = $request->json("user_pass");
-        $abelha->pkEmail = $request->json("user_email");
+        $abelha->password = $request->input("user_pass");
+        $abelha->pkEmail = $request->input("user_email");
         $abelha->callDisponibility = 's';
         $abelha->sosMensage = 'Me ajude';
         $abelha->save();
