@@ -50,7 +50,7 @@ class CadastrarController extends Controller
         }else{
             if(Hash::check($request->input("user_pass"),$dados->password))
             {
-                $resultado = "Logado";
+                $resultado = "Logado com sucesso!";
             }else{
                 $resultado = "Senha ou Nome errado";
             }
