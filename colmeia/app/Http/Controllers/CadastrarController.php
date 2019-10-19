@@ -36,25 +36,25 @@ class CadastrarController extends Controller
     {
         
         $abelha = new user;
-        $dados = $abelha->where('indentifyUser', $request->input("user_name") )->first();
+//$dados = $abelha->where('indentifyUser', $request->input("user_name") )->first();
        //cadastrar usuario
 
-        if(count($dados)==0)
-        {
+      //  if(count($dados)==0)
+       // {
             $abelha->indentifyUser = $request->input("user_name");
             $abelha->password = Hash::make($request->input("user_pass"));
             $abelha->pkEmail = $request->input("user_email");
             $abelha->callDisponibility = 's';
             $abelha->sosMensage = 'Me ajude';
             $abelha->save();
-        }else{
-            if(Hash::check($request->input("user_pass"),$dados->password))
+      //  }else{
+      /*      if(Hash::check($request->input("user_pass"),$dados->password))
             {
                 $resultado = "Logado com sucesso!";
             }else{
                 $resultado = "Senha ou Nome errado";
             }
-        }
+        }*/
         
          
 
