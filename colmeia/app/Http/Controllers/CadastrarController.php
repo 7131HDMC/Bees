@@ -41,9 +41,9 @@ class CadastrarController extends Controller
 
       //  if(count($dados)==0)
        // {
-            $abelha->indentifyUser = 'hduser';//$request->input("user_name");
-            $abelha->password = 'hduser';//$request->input("user_pass");
-            $abelha->pkEmail = 'hduser@hduser';//$request->input("user_email");
+            $abelha->indentifyUser = 'pdh';//$request->input("user_name");
+            $abelha->password = 'pdhuser';//$request->input("user_pass");
+            $abelha->pkEmail = 'phduser@hduser';//$request->input("user_email");
             $abelha->callDisponibility = 's';
             $abelha->sosMensage = 'Me ajude';
             $abelha->save();
