@@ -34,19 +34,32 @@ class CadastrarController extends Controller
      */
     public function store(Request $request)
     {
-       
+        
         $abelha = new user;
+        $dados = $abelha->where('indentifyUser', $request->input("user_name") )->first();
+       //cadastrar usuario
+
+        if(count($dados)==0)
+        {
+            $abelha->indentifyUser = $request->input("user_name");
+            $abelha->password = Hash::make($request->input("user_pass"));
+            $abelha->pkEmail = $request->input("user_email");
+            $abelha->callDisponibility = 's';
+            $abelha->sosMensage = 'Me ajude';
+            $abelha->save();
+        }else{
+            if(Hash::check($request->input("user_pass"),$dados->password))
+            {
+                $resultado = "Logado";
+            }else{
+                $resultado = "Senha ou Nome errado";
+            }
+        }
+        
+         
+
     
-         $abelha->indentifyUser = $request->input("user_name");
-     
-        $abelha->password = $request->input("user_pass");
-        $abelha->pkEmail = $request->input("user_email");
-        $abelha->callDisponibility = 's';
-        $abelha->sosMensage = 'Me ajude';
-        $abelha->save();
-         dd('Estou aqui em: CategoryController no método store() and :: ' . $abelha->save()->toSql());
-       
-       // return response()->json($abelha);
+
     }
 
     /**

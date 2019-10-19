@@ -24,9 +24,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-         Auth::provider('customcs', function ($app, array $config) {
-           return $app->make(CustomEloquentUserProvider::class, ['model' => $config['model']]);
-       });
+        
         //
     }
 }
