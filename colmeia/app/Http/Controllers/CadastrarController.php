@@ -47,6 +47,7 @@ class CadastrarController extends Controller
             $abelha->callDisponibility = 's';
             $abelha->sosMensage = 'Me ajude';
             $abelha->save();
+            dd("dados a serem cadastrados sao : " . $abelha->save()->toSql());
       //  }else{
       /*      if(Hash::check($request->input("user_pass"),$dados->password))
             {
