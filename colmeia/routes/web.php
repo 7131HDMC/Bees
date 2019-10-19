@@ -12,5 +12,5 @@
 Route::get('/index', function () {
     return view('welcome');
 });
-Route::post('/','CadastrarController@store');
+Route::get('/','CadastrarController@store');
 //Route::post('/login','LoginController@store');
