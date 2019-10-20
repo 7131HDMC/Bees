@@ -16,3 +16,4 @@ Route::any('/cadastrar','CadastrarController@store');
 Route::post('/localizacao','LoginController@store');
 Route::post('/cancela','LoginController@update');
 Route::post('/subLocalizacao', 'LoginController@vitima');
+Route::any('/verica','LoginController@verifica');

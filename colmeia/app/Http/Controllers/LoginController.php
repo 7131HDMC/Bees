@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Localizacao;
+use App\feromonio;
+use Illuminate\Support\Facades\DB;
 class LoginController extends Controller
 {
     /**
@@ -38,6 +40,8 @@ class LoginController extends Controller
        $locale = new Localizacao();
        $locale->latitude = $request->input('latitude');
        $locale->longitude = $request->input('longitude');
+       $panico = new feromonio();
+       $panico->panico = true;
        $locale->save();
 
     }
@@ -52,6 +56,17 @@ class LoginController extends Controller
         $locais = DB::table('localizacao_abelha')::get();
         return response($locais, 200)
                   ->header('Content-Type', 'text/plain');
+    }
+    public function verifica()
+    {
+      //  if(DB::table('panicoUser')->where('panico',true)->first())
+       // {    
+             return response(1, 200)
+                      ->header('Content-Type', 'text/plain');
+       // }else{            
+       //     return response(0, 200)
+      //                ->header('Content-Type', 'text/plain');
+       // }
     }
     /**
      * Display the specified resource.
