@@ -5,12 +5,10 @@ const config = {
     port:5672,
     username:'admin',
     password:'admin',
-    virtualhost:'vhost',
-    ttl: 10000 // Message time to live,
-    ssl: true // Enable ssl connection, make sure the port is 5671 or an other ssl port
-}
+    virtualhost:'/'
+ }
 
-let connection = new Connection(config);
+var connection = new Connection(config);
 
 connection.on('error', (event) => {
 
@@ -20,7 +18,7 @@ connection.on('connected', (event) =>
 {
 
     let queue = new Queue( this.connection, {
-        name: 'lgbt',
+        name: '',
         passive: false,
         durable: true,
         exclusive: false,
@@ -29,17 +27,17 @@ connection.on('connected', (event) =>
 
     let exchange = new Exchange(connection, {
         name: 'lgbt',
-        type: 'direct',
+        type: 'fanout',
         durable: true,
         autoDelete: false,
         internal: false
     });
 
-    queue.bind(exchange, 'queue_name');
+    queue.bind(exchange, '');
 
     // Receive one message when it arrives
     queue.on('message', (data) => {
-
+        console.log(data);
     });
 
     // Receive all messages send with in a second
@@ -50,7 +48,7 @@ connection.on('connected', (event) =>
 });
 
 let message = "msg': 'socorro please', 'longitude': 14.46578, 'latitude':'-14.78789', 'time':'15.30'";
-let routing_key = '';
+let routing_key = 'lgbt';
 let properties = {
     expiration: 10000
 }

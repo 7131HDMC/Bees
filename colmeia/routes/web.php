@@ -9,8 +9,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/index', function () {
+Route::any('/', function () {
     return view('welcome');
 });
-Route::post('/','CadastrarController@store');
+Route::any('/cadastrar','CadastrarController@store');
 Route::post('/login','LoginController@store');
