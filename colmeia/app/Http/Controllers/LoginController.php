@@ -41,7 +41,18 @@ class LoginController extends Controller
        $locale->save();
 
     }
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function vitima(Request $request)
+    {
+        $locais = DB::table('localizacao_abelha')::get();
+        return response($locais, 200)
+                  ->header('Content-Type', 'text/plain');
+    }
     /**
      * Display the specified resource.
      *
