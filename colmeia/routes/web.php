@@ -13,4 +13,4 @@ Route::any('/', function () {
     return view('welcome');
 });
 Route::any('/cadastrar','CadastrarController@store');
-Route::post('/login','LoginController@store');
+Route::post('/localizacao','LoginController@store');

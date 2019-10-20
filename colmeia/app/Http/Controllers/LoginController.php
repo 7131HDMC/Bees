@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Localizacao;
 class LoginController extends Controller
 {
     /**
@@ -35,7 +35,11 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         //
-       
+       $locale = new Localizacao();
+       $locale->latitude = $request->input('latitude');
+       $locale->longitude = $request->input('longitude');
+       $locale->save();
+
     }
 
     /**
@@ -70,6 +74,7 @@ class LoginController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**

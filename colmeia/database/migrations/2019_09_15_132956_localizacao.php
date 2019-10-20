@@ -17,7 +17,9 @@ class Localizacao extends Migration
          Schema::create('localizacao_abelha', function(Blueprint $table)
         {
             $table->bigIncrements('id');
-            $table->json('localizacao');
+            //$table->json('localizacao');
+            $table->string('latitude');
+            $table->string('longitude');            
             $table->timestamps();
         });
     }
