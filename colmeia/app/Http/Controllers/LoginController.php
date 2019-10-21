@@ -53,9 +53,11 @@ class LoginController extends Controller
      */
     public function vitima(Request $request)
     {
-        $locais = DB::table('localizacao_abelha')::get();
-        return response($locais, 200)
-                  ->header('Content-Type', 'text/plain');
+        $locais = DB::table('localizacao_abelha')->get()->first();
+        return response()->json([
+            'lat' => $locais->latitude,
+            'long' => $locais->longitude
+        ]);
     }
     public function verifica()
     {
