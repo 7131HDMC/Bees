@@ -8,6 +8,6 @@ class feromonio extends Model
 {
     //
     protected $table = "panicoUser";
-    protected $fillable = ['panico','ativateAt'];
- 	protected $guarded = ['id', 'created_at', 'update_at', 'user','desativateAt'];
+    protected $fillable = ['panico','ativateAt','desativateAt'];
+ 	protected $guarded = ['id', 'created_at', 'update_at'];
 }

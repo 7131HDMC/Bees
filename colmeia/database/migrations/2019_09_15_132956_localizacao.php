@@ -20,7 +20,7 @@ class Localizacao extends Migration
             //$table->json('localizacao');
             $table->string('latitude');
             $table->string('longitude');    
-            $table->unsignedBigInteger("panico");
+           // $table->unsignedBigInteger("panico");
 
             /*  $table->foreign("panico")->references("id")->on("panicoUser")->onUpdate("cascade");*/        
             $table->timestamps();

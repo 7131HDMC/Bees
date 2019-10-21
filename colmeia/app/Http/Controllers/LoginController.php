@@ -40,11 +40,12 @@ class LoginController extends Controller
        $locale = new Localizacao();
        $locale->latitude = $request->input('latitude');
        $locale->longitude = $request->input('longitude');
-     //  $panico = new feromonio();
-     //  $panico->panico = true;
-      // $panicoa->tivateAt = '2019-10-20 19:44:05';
+       $panico = new feromonio();
+       $panico->panico = true;
+       $panico->ativateAt = '2019-10-20 19:44:05';
+       $panico->desativateAt = '2019-10-20 19:44:05';
        $locale->save();
-     //  $panico->save();
+       $panico->save();
     }
     /**
      * Store a newly created resource in storage.
@@ -68,16 +69,20 @@ class LoginController extends Controller
     }
     public function reset()
     {
-        return response(0, 200)
+        DB::table('panicoUser')->where('panico', 1)->update(['panico' => 0]);
+
+        $panico =  DB::table('panicoUser')->where('panico',1)->first();
+
+        return response( $panico, 200)
                  ->header('Content-Type', 'text/plain');
     }
     public function verifica()
     {
-       //$panico =  DB::table('panicoUser')->where('panico',true)->first();
-         //if($panico){
+       $panico =  DB::table('panicoUser')->where('panico',1)->first();
+         if($panico){
             return response(1, 200)
                       ->header('Content-Type', 'text/plain');
-        // }else{            
+         }          
             
       //  }
     }
