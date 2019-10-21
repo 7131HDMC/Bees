@@ -55,16 +55,16 @@ class LoginController extends Controller
     public function long(Request $request)
     {
         $locais = DB::table('localizacao_abelha')->get()->first();
-        return response()->json([
-            'long' => $locais->longitude
-        ]);
+        
+        return response($locais->longitude, 200)
+                 ->header('Content-Type', 'text/plain');
     }
     public function lat(Request $request)
     {
         $locais = DB::table('localizacao_abelha')->get()->first();
-        return response()->json([
-            'lat' => $locais->latitude
-        ]);
+        
+        return response($locais->latitude, 200)
+                 ->header('Content-Type', 'text/plain');
     }
     public function reset()
     {
