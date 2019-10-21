@@ -40,10 +40,11 @@ class LoginController extends Controller
        $locale = new Localizacao();
        $locale->latitude = $request->input('latitude');
        $locale->longitude = $request->input('longitude');
-       $panico = new feromonio();
-       $panico->panico = true;
+     //  $panico = new feromonio();
+     //  $panico->panico = true;
+      // $panicoa->tivateAt = '2019-10-20 19:44:05';
        $locale->save();
-
+     //  $panico->save();
     }
     /**
      * Store a newly created resource in storage.
@@ -51,24 +52,34 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function vitima(Request $request)
+    public function long(Request $request)
     {
         $locais = DB::table('localizacao_abelha')->get()->first();
         return response()->json([
-            'lat' => $locais->latitude,
             'long' => $locais->longitude
         ]);
     }
+    public function lat(Request $request)
+    {
+        $locais = DB::table('localizacao_abelha')->get()->first();
+        return response()->json([
+            'lat' => $locais->latitude
+        ]);
+    }
+    public function reset()
+    {
+        return response(0, 200)
+                 ->header('Content-Type', 'text/plain');
+    }
     public function verifica()
     {
-      //  if(DB::table('panicoUser')->where('panico',true)->first())
-       // {    
-             return response(1, 200)
+       //$panico =  DB::table('panicoUser')->where('panico',true)->first();
+         //if($panico){
+            return response(1, 200)
                       ->header('Content-Type', 'text/plain');
-       // }else{            
-       //     return response(0, 200)
-      //                ->header('Content-Type', 'text/plain');
-       // }
+        // }else{            
+            
+      //  }
     }
     /**
      * Display the specified resource.
