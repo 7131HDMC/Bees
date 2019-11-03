@@ -17,10 +17,10 @@ class Colonia extends Migration
          Schema::create("colonia",function(Blueprint $table)
             {
                 $table->bigIncrements("id");
-                $table->unsignedBigInteger("colmeia_id");
-                $table->foreign("colmeia_id")->references("id")->on("colmeia");
-                $table->unsignedBigInteger("abelha_id");
-                $table->foreign("abelha_id")->references("id")->on("abelha");
+                $table->string('description', 100);
+                $table->string('colonia_name',30);
+                $table->unsignedBigInteger("abelha")->nullable();
+                $table->foreign("abelha")->references("id")->on("abelha")->onUpdate("cascade");    
                 $table->timestamps();
             });
     }

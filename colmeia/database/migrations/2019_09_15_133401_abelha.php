@@ -19,9 +19,11 @@ class Abelha extends Migration
                 $table->bigIncrements('id');
                 $table->string("pkEmail",70)->unique();
                 $table->string("password",12);
-                $table->string("indentifyUser",30);
+                $table->string("indentifyUser",30)->unique();
                 $table->string("callDisponibility");
-                $table->string("sosMensage",70);      
+                $table->string("sosMensage",70);
+                $table->unsignedBigInteger("colonia")->nullable();
+                $table->foreign("colonia")->references("id")->on("colonia")->onUpdate("cascade");      
                 $table->timestamps();
             });
     }

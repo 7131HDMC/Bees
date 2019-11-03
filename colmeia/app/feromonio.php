@@ -9,5 +9,5 @@ class feromonio extends Model
     //
     protected $table = "panicoUser";
     protected $fillable = ['panico','ativateAt','desativateAt'];
- 	protected $guarded = ['id', 'created_at', 'update_at'];
+ 	protected $guarded = ['id','user', 'created_at', 'update_at'];
 }

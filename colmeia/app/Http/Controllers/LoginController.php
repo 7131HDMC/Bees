@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Localizacao;
 use App\feromonio;
+use App\user;
 use Illuminate\Support\Facades\DB;
 class LoginController extends Controller
 {
@@ -34,19 +35,41 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function panico(Request $request)
     {
         //
-       $locale = new Localizacao();
-       $locale->latitude = $request->input('latitude');
-       $locale->longitude = $request->input('longitude');
+
        $panico = new feromonio();
        $panico->panico = true;
-       $panico->ativateAt = '2019-10-20 19:44:05';
-       $panico->desativateAt = '2019-10-20 19:44:05';
+       $panico->ativateAt = $request->input('ativar');
+       //$panico->desativateAt = $request->input('desativar');
+       $id_user = DB::table('abelha')->select('id')->where('indentifyUser',$request->input('user_name') )->get()->first();
+       $panico->user = $id_user->id;
+     dd( 'OLA PANICO SQL::: ' . $panico->save()->toSql());
+
+      /* $locale = new Localizacao();
+       $locale->latitude = $request->input('latitude');
+       $locale->longitude = $request->input('longitude');
        $locale->save();
-       $panico->save();
+       */ 
+      
     }
+
+    public function login(Request $request)
+    {
+        $email = DB::table('abelha')->where('pkEmail','=', $request->input('user_email'))->orWhere('indentifyUser','=', $request->input('user_name'))->get()->first();
+        $pass = DB::table('abelha')->where('password','=', $request->input('user_pass'))->get()->first();
+        if($email != null)
+        {
+            if($pass != null){
+                return 1;
+            }else{return 0;}
+
+        }else {return 0;}
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -67,20 +90,42 @@ class LoginController extends Controller
         return response($locais->latitude, 200)
                  ->header('Content-Type', 'text/plain');
     }
-    public function reset()
+    public function cadastrar(Request $request)
     {
-        DB::table('panicoUser')->where('panico', 1)->update(['panico' => 0]);
+        $abelha = new user;
+    
+         $abelha->indentifyUser = $request->input("user_name");
+     
+        $abelha->password = $request->input("user_pass");
+        $abelha->pkEmail = $request->input("user_email");
+        $abelha->callDisponibility = 's';
+        $abelha->sosMensage = 'Me ajude';
+        $abelha->save();
+         dd('Estou aqui em: CategoryController no método store() and :: ' . $abelha->save()->toSql());
+    }
+    public function reset(Request $request)
+    {
+        
 
-        $panico =  DB::table('panicoUser')->where('panico',1)->first();
+    
+      $panico =  DB::table('abelha')->join('panicoUser',function($join)
+        {
+            $join->on('abelha.id', '=', 'panicoUser.user');
+        })->where('indentifyUser',$request->user_name)->update(['panico' => 0])->get();
 
+
+       // $panico =  DB::table('abelha')->join('user')select('panico')->where('panico',1)->first();
         return response( $panico, 200)
                  ->header('Content-Type', 'text/plain');
     }
-    public function verifica()
+    public function verifica(Request $request)
     {
-       $panico =  DB::table('panicoUser')->where('panico',1)->first();
+       $panico =  DB::table('abelha')->join('panicoUser', function($join)
+        {
+            $join->on('abelha.id', '=', 'panicoUser.user');
+        })->where('panico',1)->get()->first();
          if($panico){
-            return response(1, 200)
+            return response($panico->panico, 200)
                       ->header('Content-Type', 'text/plain');
          }          
             

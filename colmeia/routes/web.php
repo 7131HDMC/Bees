@@ -12,8 +12,9 @@
 Route::any('/', function () {
     return view('welcome');
 });
-Route::any('/cadastrar','CadastrarController@store');
-Route::post('/localizacao','LoginController@store');
+Route::any('/cadastrar','LoginController@cadastrar');
+Route::any('/login','LoginController@login');
+Route::post('/panico','LoginController@panico');
 Route::any('/reset','LoginController@reset');
 Route::any('/long', 'LoginController@long');
 Route::any('/verica','LoginController@verifica');
