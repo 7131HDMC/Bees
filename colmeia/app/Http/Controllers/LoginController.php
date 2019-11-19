@@ -56,7 +56,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $email = DB::table('abelha')->where('pkEmail','=', $request->input('user_email'))->orWhere('indentifyUser','=', $request->input('user_name'))->get()->first();
+        $email = DB::table('abelha')->where('pkEmail','=', $request->input('user_name'))->orWhere('indentifyUser','=', $request->input('user_name'))->get()->first();
         $pass = DB::table('abelha')->where('password','=', $request->input('user_pass'))->get()->first();
         if($email != null)
         {
@@ -74,18 +74,46 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     // ajuste para o trabalho da view - app
     public function long(Request $request)
     {
-        $locais = DB::table('localizacao_abelha')->get()->first();
+        $panico =  DB::table('abelha')->select("indentifyUser")->join('panicoUser', function($join)
+        {
+            $join->on('abelha.id', '=', 'panicoUser.user');
+
+        })->where('panico',1)->get()->first();
+
+       if($panico)
+       {
+             $localizacaoBee =  DB::table('panicoUser')->select("longitude")->join('localizacao_abelha', function($join)
+            {
+                $join->on('panicoUser.user', '=', 'localizacao_abelha.panico');
+            })->where('panicoUser.panico',1)->get()->first();
+
+       }
         
-        return response($locais->longitude, 200)
+        return response($localizacaoBee->longitude, 200)
                  ->header('Content-Type', 'text/plain');
     }
+    // ajuste para o trabalho da view - app
     public function lat(Request $request)
     {
-        $locais = DB::table('localizacao_abelha')->get()->first();
+         $panico =  DB::table('abelha')->select("indentifyUser")->join('panicoUser', function($join)
+        {
+            $join->on('abelha.id', '=', 'panicoUser.user');
+
+        })->where('panico',1)->get()->first();
+
+       if($panico)
+       {
+             $localizacaoBee =  DB::table('panicoUser')->select("latitude")->join('localizacao_abelha', function($join)
+            {
+                $join->on('panicoUser.user', '=', 'localizacao_abelha.panico');
+            })->where('panicoUser.panico',1)->get()->first();
+
+       }
         
-        return response($locais->latitude, 200)
+        return response($localizacaoBee->latitude, 200)
                  ->header('Content-Type', 'text/plain');
     }
     public function cadastrar(Request $request)
