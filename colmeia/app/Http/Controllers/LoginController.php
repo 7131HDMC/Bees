@@ -116,6 +116,17 @@ class LoginController extends Controller
         return response($localizacaoBee->latitude, 200)
                  ->header('Content-Type', 'text/plain');
     }
+    public function name(Request $request)
+    {
+         $panico =  DB::table('abelha')->select("indentifyUser")->join('panicoUser', function($join)
+        {
+            $join->on('abelha.id', '=', 'panicoUser.user');
+
+        })->where('panico',1)->get()->first();
+        
+        return response($panico->indentifyUser, 200)
+                 ->header('Content-Type', 'text/plain');
+    }
     public function cadastrar(Request $request)
     {
         $credentials = DB::table('abelha')->where('pkEmail','=', $request->input('user_email'))->orWhere('indentifyUser','=', $request->input('user_name'))->get()->first();
@@ -141,7 +152,7 @@ class LoginController extends Controller
       $panico =  DB::table('abelha')->join('panicoUser',function($join)
         {
             $join->on('abelha.id', '=', 'panicoUser.user');
-        })->where('indentifyUser',$request->user_name)->update(['panico' => 0])->get();
+        })->where('indentifyUser',$request->input('user_name'))->update(['panico' => 0]);
 
 
        // $panico =  DB::table('abelha')->join('user')select('panico')->where('panico',1)->first();

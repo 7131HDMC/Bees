@@ -19,3 +19,4 @@ Route::any('/reset','LoginController@reset');
 Route::any('/long', 'LoginController@long');
 Route::any('/verica','LoginController@verifica');
 Route::any('/lat', 'LoginController@lat');
+Route::any('/nome', 'LoginController@name');
