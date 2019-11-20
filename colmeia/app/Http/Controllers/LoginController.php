@@ -172,25 +172,25 @@ class LoginController extends Controller
             $join->on('abelha.id', '=', 'panicoUser.user');
 
         })->where('panico',1)->get()->first();
-
-       if($panico)
-       {
-             $localizacaoBee =  DB::table('panicoUser')->select("longitude","latitude")->join('localizacao_abelha', function($join)
+ return response($panico->panico, 200)
+                 ->header('Content-Type', 'text/plain');
+       //if($panico)
+       //{
+             /*$localizacaoBee =  DB::table('panicoUser')->select("longitude","latitude")->join('localizacao_abelha', function($join)
             {
                 $join->on('panicoUser.user', '=', 'localizacao_abelha.panico');
             })->where('panicoUser.panico',1)->get()->first();
              if($localizacaoBee)
-             {
-                 return response(1, 200)
-                 ->header('Content-Type', 'text/plain');
-             }else{
+             {*/
+                
+           /*  }else{
                  return response(0, 200)
                  ->header('Content-Type', 'text/plain');
-             }
-       }else{
-         return response(0, 200)
-                 ->header('Content-Type', 'text/plain');
-       }
+             }*/
+     //  }else{
+       //  return response(0, 200)
+         //        ->header('Content-Type', 'text/plain');
+       //}
 
       
 
