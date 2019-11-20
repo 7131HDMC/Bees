@@ -61,10 +61,13 @@ class LoginController extends Controller
         if($email != null)
         {
             if($pass != null){
-                return 1;
-            }else{return 0;}
+                return response(1, 200)
+                 ->header('Content-Type', 'text/plain');
+            }else{return response(0, 200)
+                 ->header('Content-Type', 'text/plain');}
 
-        }else {return 0;}
+        }else {return response(0, 200)
+                 ->header('Content-Type', 'text/plain');}
         
     }
 
@@ -143,8 +146,10 @@ class LoginController extends Controller
             
             return response(1, 200)
                  ->header('Content-Type', 'text/plain');
-        }else {return response(0, 200)
+        }else {
+            return response(0, 200)
                  ->header('Content-Type', 'text/plain');
+             }
     public function reset(Request $request)
     {
         
