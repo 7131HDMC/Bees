@@ -150,6 +150,7 @@ class LoginController extends Controller
             return response(0, 200)
                  ->header('Content-Type', 'text/plain');
              }
+         }
     public function reset(Request $request)
     {
         
