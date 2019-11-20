@@ -168,15 +168,16 @@ class LoginController extends Controller
     }
     public function verifica(Request $request)
     {//,
-       $panico =  DB::table('abelha')->select("indentifyUser", "sosMensage", 'panicoUser.user')->join('panicoUser', function($join)
+       $panico =  DB::table('abelha')->select("panico")->join('panicoUser', function($join)
         {
             $join->on('abelha.id', '=', 'panicoUser.user');
 
         })->where('panico',1)->get()->first();
- return response($panico->panico, 200)
+ 
+       if($panico)
+       {
+        return response($panico->panico, 200)
                  ->header('Content-Type', 'text/plain');
-       //if($panico)
-       //{
              /*$localizacaoBee =  DB::table('panicoUser')->select("longitude","latitude")->join('localizacao_abelha', function($join)
             {
                 $join->on('panicoUser.user', '=', 'localizacao_abelha.panico');
@@ -191,7 +192,7 @@ class LoginController extends Controller
      //  }else{
        //  return response(0, 200)
          //        ->header('Content-Type', 'text/plain');
-       //}
+       }
 
       
 
