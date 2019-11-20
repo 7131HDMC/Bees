@@ -58,7 +58,9 @@ class LoginController extends Controller
     {
         $email = DB::table('abelha')->where('pkEmail','=', $request->input('user_name'))->orWhere('indentifyUser','=', $request->input('user_name'))->get()->first();
         $pass = DB::table('abelha')->where('password','=', $request->input('user_pass'))->get()->first();
-        if($email != null)
+        return response($request->input('user_name').'-'.$request->input('user_pass'), 200)
+                 ->header('Content-Type', 'text/plain');
+       /* if($email != null)
         {
             if($pass != null){
                 return response('1', 200)
@@ -68,6 +70,7 @@ class LoginController extends Controller
 
         }else {return response('0', 200)
                  ->header('Content-Type', 'text/plain');}
+                 */
         
     }
 
