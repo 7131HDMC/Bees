@@ -141,9 +141,10 @@ class LoginController extends Controller
             $abelha->save();
             $abelha->save();
             
-            return 1;
-        }else {return 0;}
-    }
+            return response(1, 200)
+                 ->header('Content-Type', 'text/plain');
+        }else {return response(0, 200)
+                 ->header('Content-Type', 'text/plain');
     public function reset(Request $request)
     {
         
@@ -173,16 +174,26 @@ class LoginController extends Controller
             {
                 $join->on('panicoUser.user', '=', 'localizacao_abelha.panico');
             })->where('panicoUser.panico',1)->get()->first();
-
+             if($localizacaoBee)
+             {
+                 return response(1, 200)
+                 ->header('Content-Type', 'text/plain');
+             }else{
+                 return response(0, 200)
+                 ->header('Content-Type', 'text/plain');
+             }
+       }else{
+         return response(0, 200)
+                 ->header('Content-Type', 'text/plain');
        }
 
       
 
        //dd($localizacaoBee);
-        if($panico){
+        /*if($panico){
             return response($panico->indentifyUser . '=' . $panico->sosMensage . '=' . $localizacaoBee->longitude .  '=' . $localizacaoBee->latitude)
                       ->header('Content-Type', 'text/plain');
-         }          
+         }*/          
           
       
     }
