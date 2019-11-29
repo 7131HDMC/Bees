@@ -21,7 +21,6 @@ class Localizacao extends Migration
             $table->string('longitude');    
             $table->unsignedBigInteger('panico')->nullable();
             $table->foreign("panico")->references("id")->on("panicoUser")->onUpdate("cascade");        
-            $table->timestamps();
         });
     }
 
