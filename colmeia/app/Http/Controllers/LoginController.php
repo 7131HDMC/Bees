@@ -39,19 +39,17 @@ class LoginController extends Controller
     public function panico(Request $request)
     {
        $id_user = DB::table('abelha')->select('id')->where('indentifyUser',$request->input('user_name') )->get()->first();
-       $datetime = date("Y-m-d h:i:s");
 
        $panico = new feromonio();
        $localizacao = new Localizacao();
 
        $panico->user = $id_user->id;
        $panico->panico = true;
-       $panico->ativateAt = $datetime;
        $localizacao->latitude = $request->input('latitude');
        $localizacao->longitude = $request->input('longitude');
        $localizacao->panico = $panico->user;
        $localizacao->save();
-     dd( 'OLA PANICO SQL::: ' . $panico->save()->toSql());
+  //   dd( 'OLA PANICO SQL::: ' . $panico->save()->toSql());
     }
 
     public function login(Request $request)
@@ -176,11 +174,13 @@ class LoginController extends Controller
             $join->on('abelha.id', '=', 'panicoUser.user');
 
         })->where('panico',1)->get()->first();
- 
+ //retorna a validade do panico
        if($panico)
        {
         return response($panico->panico, 200)
                  ->header('Content-Type', 'text/plain');
+
+/**retorna os dados da abelha para os listenners, porem os mesmos nao estao sob efeito de subiscricao, logo o modelo colmeia e sua relacao com a abelha nao sao vingadas no presente controller! 
              /*$localizacaoBee =  DB::table('panicoUser')->select("longitude","latitude")->join('localizacao_abelha', function($join)
             {
                 $join->on('panicoUser.user', '=', 'localizacao_abelha.panico');

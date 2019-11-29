@@ -18,8 +18,6 @@ class Feromonio extends Migration
             {
                 $table->bigIncrements("id");
                 $table->boolean("panico");
-                $table->dateTimeTz("ativateAt");
-                $table->dateTimeTz("desativateAt")->nullable();
                 $table->unsignedBigInteger("user")->nullable();
                  $table->foreign("user")->references("id")->on("abelha")->onUpdate("cascade");
             });
