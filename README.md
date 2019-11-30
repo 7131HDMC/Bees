@@ -5,8 +5,8 @@ A Bees é um sistema de segurança colaborativa para comunidades de risco, como 
 O presente repositório refere apenas ao projeto em desenvolvimento das regras de negócio.
 
 # Participantes
-  Hari Dasa Fiuza de Moura
-  Henrique Duarte Guerra
+  Hari Dasa Fiuza de Moura,
+  Henrique Duarte Guerra,
   Guilherme Macedo Alves Silva
 Orientadora:
   Danielle Pêgo Batista
